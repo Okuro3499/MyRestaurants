@@ -11,22 +11,24 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.jade.myrestaurants.R;
 import com.jade.myrestaurants.models.Business;
+import com.jade.myrestaurants.models.Restaurant;
 import com.jade.myrestaurants.ui.RestaurantDetailActivity;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
 
+import java.util.ArrayList;
 import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAdapter.RestaurantViewHolder> {
-    private List<Business> mRestaurants;
+    private List<Restaurant> mRestaurants;
     private Context mContext;
 
-    public RestaurantListAdapter (Context context, List<Business> restaurants) {
-       mContext = context;
-       mRestaurants = restaurants;
+    public RestaurantListAdapter (Context context, ArrayList<Restaurant> restaurants) {
+        mContext = context;
+        mRestaurants = restaurants;
     }
 
     @Override
@@ -70,10 +72,10 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
             mContext.startActivity(intent);
         }
 
-        public void bindRestaurant(Business restaurant) {
+        public void bindRestaurant(Restaurant restaurant) {
             Picasso.get().load(restaurant.getImageUrl()).into(mRestaurantImageView);
             mNameTextView.setText(restaurant.getName());
-            mCategoryTextView.setText(restaurant.getCategories().get(0).getTitle());
+            mCategoryTextView.setText(restaurant.getCategories().get(0));
             mRatingTextView.setText("Rating: " + restaurant.getRating() + "/5");
         }
     }

@@ -53,6 +53,9 @@ public class Business {
     @SerializedName("transactions")
     @Expose
     private List<String> transactions = null;
+    @SerializedName("address")
+    @Expose
+    private String address;
 
     /**
      * No args constructor for use in serialization
@@ -78,6 +81,7 @@ public class Business {
      * @param rating
      * @param isClosed
      * @param coordinates
+     * @param address
      */
     public Business(Double rating, String price, String phone, String id, String alias, Boolean isClosed, List<Category> categories, Integer reviewCount, String name, String url, Coordinates coordinates, String imageUrl, Location location, Double distance, List<String> transactions) {
         super();
@@ -96,6 +100,7 @@ public class Business {
         this.location = location;
         this.distance = distance;
         this.transactions = transactions;
+        this.address = address;
     }
 
     public Double getRating() {
@@ -218,4 +223,7 @@ public class Business {
         this.transactions = transactions;
     }
 
+    public String getAddress() {
+        return address;
+    }
 }
